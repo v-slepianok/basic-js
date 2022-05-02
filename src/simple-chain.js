@@ -11,16 +11,18 @@ const chainMaker = {
     return length;
   },
   addLink(value) {
-    this.chain.push(`(${String(value)})`);
+    this.chain.push(`( ${String(value)} )`);
     return this;
   },
-  removeLink( position) {
-    if(position != 'number'||  position < 0 || position > this.chain.length){
-      throw new Error ("You can't remove incorrect link!");
-    }
-    this.chain.splice(position, 1);
-    return this;
+  removeLink(position) {
+    const positionFixed = position - 1;
 
+    if(typeof position != 'number' || positionFixed < 0 || positionFixed >= this.getLength()){
+      //throw new Error ("You can\'t remove incorrect link!");
+      throw new Error("You can\'t remove incorrect link!");
+    }
+    this.chain.splice(positionFixed, 1);
+    return this;
   },
   reverseChain() {
     this.chain.reverse();
@@ -35,3 +37,7 @@ const chainMaker = {
 module.exports = {
   chainMaker
 };
+
+//chainMaker.addLink(1).addLink(2).addLink(3).removeLink(4)
+const a = chainMaker.addLink('GHI').addLink(null).reverseChain().addLink(333).reverseChain().reverseChain().addLink(0).reverseChain().reverseChain().addLink('GHI').finishChain()
+console.log(a);
