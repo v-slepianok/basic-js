@@ -37,7 +37,3 @@ const chainMaker = {
 module.exports = {
   chainMaker
 };
-
-//chainMaker.addLink(1).addLink(2).addLink(3).removeLink(4)
-const a = chainMaker.addLink('GHI').addLink(null).reverseChain().addLink(333).reverseChain().reverseChain().addLink(0).reverseChain().reverseChain().addLink('GHI').finishChain()
-console.log(a);
